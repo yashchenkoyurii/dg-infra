@@ -1,0 +1,8 @@
+#!/bin/bash
+
+apt-get update
+apt-get install -y docker.io
+
+docker pull ghcr.io/arriven/db1000n
+
+docker run -d ghcr.io/arriven/db1000n
