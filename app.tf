@@ -26,7 +26,7 @@ module "db1000n" {
   for_each = toset([for i in range(var.db1000n_count) : tostring(i)])
 
   image       = data.digitalocean_image.ubuntu.id
-  region      = var.region
+  region      = var.regions[each.key]
   size        = var.droplet_size
   user_data   = templatefile("${path.cwd}/bootstraps/db1000n.tftpl", {})
   key_pair_id = module.key_pair.key_pair_id
@@ -39,9 +39,10 @@ module "mhddos_proxy" {
 
   image       = data.digitalocean_image.ubuntu.id
   key_pair_id = module.key_pair.key_pair_id
-  region      = var.region
+  region      = var.regions[each.key]
   size        = var.droplet_size
-  user_data = templatefile("${path.cwd}/bootstraps/proxy.tftpl", {
+  user_data   = templatefile("${path.cwd}/bootstraps/proxy.tftpl", {
     targets : join(" ", var.mhddos_proxy_targets)
+    threads : var.proxy_threads_count
   })
 }
