@@ -9,10 +9,11 @@ terraform {
 
 
 resource "digitalocean_droplet" "instance" {
-  image     = var.image
-  name      = "ubuntu"
-  region    = var.region
-  size      = var.size
-  ssh_keys  = [var.key_pair_id]
-  user_data = var.user_data
+  image      = var.image
+  name       = "ubuntu"
+  region     = var.region
+  size       = var.size
+  ssh_keys   = [var.key_pair_id]
+  user_data  = var.user_data
+  monitoring = true
 }

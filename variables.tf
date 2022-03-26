@@ -38,3 +38,13 @@ variable "mhddos_proxy_count" {
 variable "droplet_size" {
   type = string
 }
+
+variable "regions" {
+  type = list(string)
+  description = "Regions where droplets are created"
+}
+
+variable "proxy_threads_count" {
+  type = number
+  description = "Number of threads in proxy"
+}

